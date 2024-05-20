@@ -239,10 +239,10 @@
 
 //simulador com metodos
 let emprestimo = {
-    valorEmprestimo: 2500, // valor do empréstimo
-    numeroParcelas: 24, // número de parcelas
-    taxaJuros: 0.02, // taxa de juros
-    limiteParcelasSemJuros: 6, // limite de parcelas sem juros
+    valorEmprestimo: parseFloat(prompt("Insira o valor do empréstimo:")), // valor do empréstimo
+    numeroParcelas: parseInt(prompt("Insira o número de parcelas:")), // número de parcelas
+    taxaJuros: parseFloat(prompt("Insira a taxa de juros:")), // taxa de juros
+    limiteParcelasSemJuros: parseInt(prompt("Insira o limite de parcelas sem juros:")), // limite de parcelas sem juros
     calcularValorParcela: function () {
         if (this.numeroParcelas > this.limiteParcelasSemJuros) {
             this.valorEmprestimo += this.valorEmprestimo * this.taxaJuros;
