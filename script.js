@@ -236,12 +236,44 @@
 // }
 
 
+// simulador com metodos
 
-//simulador com metodos
+// criando usuario
+class Usuario {
+    constructor(nome, idade, email) {
+        this.nome = nome;
+        this.idade = idade;
+        this.email = email;
+    }
+};
+
+let infoUsuario = new Usuario( // pega as infos do usuario no prompt
+    prompt("Insira seu nome completo: "),
+    prompt("Insira sua idade: "),
+    prompt("Insira seu e-mail ")
+);
+
+const usuarios = [infoUsuario];
+console.log(usuarios);
+// muda a taxa dependendo da idade do usuario
+if (infoUsuario.idade >= 17 && infoUsuario.idade <= 30) {
+    taxaJuros = 0.02;
+} else if (infoUsuario.idade > 30 && infoUsuario.idade <= 50) {
+    taxaJuros = 0.04;
+} else if (infoUsuario.idade > 50 && infoUsuario.idade <= 65) {
+    taxaJuros = 0.05;
+} else if (infoUsuario.idade > 65 && infoUsuario.idade <= 70) {
+    taxaJuros = 0.07;
+} else if (infoUsuario.idade > 70) {
+    taxaJuros = 0.08;
+} else {
+    taxaJuros = 0;  // default taxa de juros se a idade não se enquadrar em nenhuma faixa
+};
+
 let emprestimo = {
     valorEmprestimo: parseFloat(prompt("Insira o valor do empréstimo:")), // valor do empréstimo
     numeroParcelas: parseInt(prompt("Insira o número de parcelas:")), // número de parcelas
-    taxaJuros: parseFloat(prompt("Insira a taxa de juros:")), // taxa de juros
+    taxaJuros:  taxaJuros, // taxa de juros
     limiteParcelasSemJuros: parseInt(prompt("Insira o limite de parcelas sem juros:")), // limite de parcelas sem juros
     calcularValorParcela: function () {
         if (this.numeroParcelas > this.limiteParcelasSemJuros) {
@@ -256,5 +288,6 @@ let valorParcela = emprestimo.calcularValorParcela();
 console.log(`\n valor total: ${emprestimo.valorEmprestimo.toFixed(2)}\n`);
 
 for (let i = 0; i < emprestimo.numeroParcelas; i++) {
+    console.log(taxaJuros); // mostra valor da taxa
     console.log(`Parcela ${i + 1}: ${valorParcela.toFixed(2)}\n`); // exibe o valor da parcela
 }
