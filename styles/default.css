@@ -1,0 +1,15 @@
+/* default.css */
+
+/* Reset default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set default font and color */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Add your custom styles below */
