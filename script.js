@@ -111,4 +111,3 @@ console.log(`\nValor total do empréstimo: ${emprestimo.valorEmprestimo.toFixed(
 for (let i = 0; i < parcelas.length; i++) {
     console.log(`Parcela ${i + 1}: ${parcelas[i].toFixed(2)}\n`);
 }
-======
