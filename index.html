@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge' lang="pt-br">
-  <link rel="stylesheet" href="styles/default.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" lang="pt-br" />
   <title>Page Title</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/styles/default.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
 </head>
+
 <body>
-
   <h1>Simulador de Empréstimo</h1>
-    <form id="formularioEmprestimo">
-      <label for="valorEmprestimo">Valor do Empréstimo (R$):</label>
-      <input type="number" id="valorEmprestimo" min="1" required /><br /><br />
+  <form id="formularioEmprestimo">
+    <label for="valorEmprestimo">Valor do Empréstimo (R$):</label>
+    <input type="number" id="valorEmprestimo" min="1" required /><br /><br />
 
-      <label for="numeroParcelas">Número de Parcelas:</label>
-      <input type="number" id="numeroParcelas" min="1" required /><br /><br />
+    <label for="numeroParcelas">Número de Parcelas:</label>
+    <input type="number" id="numeroParcelas" min="1" required /><br /><br />
 
-      <label for="limiteParcelasSemJuros">Limite de Parcelas sem Juros:</label>
-      <input
-        type="number"
-        id="limiteParcelasSemJuros"
-        min="1"
-        required
-      /><br /><br />
+    <label for="limiteParcelasSemJuros">Limite de Parcelas sem Juros:</label>
+    <input type="number" id="limiteParcelasSemJuros" min="1" required /><br /><br />
 
-      <label for="idade">Idade:</label>
-      <input type="number" id="idade" min="18" max="120" required /><br /><br />
+    <label for="idade">idade:</label>
+    <input type="number" id="idade" min="18" max="120" required /><br /><br />
 
-      <label for="dataPrimeiraParcela">Data da Primeira Parcela:</label>
-      <input type="date" id="dataPrimeiraParcela" required /><br /><br />
+    <label for="dataprimeiraparcela">data da primeira parcela:</label>
+    <input type="date" id="dataprimeiraparcela" required /><br /><br />
 
-      <button type="submit">Calcular Empréstimo</button>
-    </form>
+    <button type="submit">calcular empréstimo</button>
+  </form>
 
-    <div id="resultadoEmprestimo"></div>
-
-
+  <div id="resultadoEmprestimo"></div>
 
   <script src="scripts/scriptTeste.js"></script>
 </body>
+
 </html>
