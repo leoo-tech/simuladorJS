@@ -53,7 +53,7 @@ formulario.addEventListener("submit", (event) => {
 
     // Aplicação da taxa de juros
     let valorEmprestimoComJuros = valorEmprestimo; // Nova variável para armazenar o valor com juros
-    if (numeroParcelas > limiteParcelasSemJuros) {
+    if (numeroParcelas > limiteParcelasSemJuros || taxaJuros > 0) {
         valorEmprestimoComJuros += valorEmprestimoComJuros * taxaJuros;
     }
 
@@ -64,25 +64,28 @@ formulario.addEventListener("submit", (event) => {
 
     // Cálculo das datas de vencimento das parcelas e formatação
     let parcelasInfo = '';
-    for (let i = 1; i <= numeroParcelas; i++) {
-        const dataVencimento = new Date(dataPrimeiraParcela);
-        dataVencimento.setMonth(dataVencimento.getMonth() + i - 1);
+    let dataVencimento = new Date(dataPrimeiraParcela); // Inicializa com a data da primeira parcela
 
-        const dia = String(dataVencimento.getDate()).padStart(2, '0'); // Garante dois dígitos no dia
-        const mes = String(dataVencimento.getMonth() + 1).padStart(2, '0'); // Garante dois dígitos no mês
+    for (let i = 1; i <= numeroParcelas; i++) {
+        const dia = String(dataVencimento.getDate()).padStart(2, '0');
+        const mes = String(dataVencimento.getMonth() + 1).padStart(2, '0');
         const ano = dataVencimento.getFullYear();
 
         const valorFormatado = valorParcela.toLocaleString('pt-BR', {
             minimumFractionDigits: 2,
-            maximumFractionDigits: 2 // Limita para duas casas decimais
+            maximumFractionDigits: 2
         });
 
         parcelasInfo += `Parcela ${i}: R$ ${valorFormatado}, Vencimento: ${dia}/${mes}/${ano}\n`;
+
+        dataVencimento.setMonth(dataVencimento.getMonth() + 1); // Adiciona um mês à data da parcela anterior
     }
+
 
     // Salvar resultados no localStorage
     const resultados = {
         valorTotal: valorEmprestimo.toFixed(2),
+        valorTotalJuros: valorEmprestimoComJuros.toFixed(2),
         numParcelas: numeroParcelas,
         taxaJuros: taxaJuros,
         parcelas: parcelasInfo,
@@ -93,9 +96,10 @@ formulario.addEventListener("submit", (event) => {
     // Apresentação dos resultados na página
     resultadoDiv.innerHTML = `
         <h2>Resultado do Empréstimo</h2>
-        <p>Valor total a ser pago: R$ ${valorEmprestimo.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+        <p>Valor total a ser pago: R$ ${valorEmprestimoComJuros.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+        <p>Valor original do empréstimo: R$ ${valorEmprestimo.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
         <p>Número de parcelas: ${numeroParcelas}</p>
-        <p>Taxa de juros aplicada: ${taxaJuros * 100}%</p>
+        <p>Taxa de juros aplicada: ${(taxaJuros * 100).toFixed(2)}%</p>
         <h3>Parcelas:</h3>
         <pre>${parcelasInfo}</pre>
     `;
@@ -110,7 +114,8 @@ function exibirResultadosAnteriores() {
         const resultados = JSON.parse(resultadosSalvos);
         resultadoDiv.innerHTML += `
       <h3>Resultados Anteriores:</h3>
-      <p>Valor total: R$ ${resultados.valorTotal}</p>
+      <p>Valor total: R$ ${resultados.valorTotalJuros}</p>
+      <p>Valor original do empréstimo: R$ ${resultados.valorTotal}</p>
       <p>Parcelas: ${resultados.numParcelas}</p>
       <p>Taxa de juros: ${resultados.taxaJuros * 100}%</p>
       <pre>${resultados.parcelas}</pre>
