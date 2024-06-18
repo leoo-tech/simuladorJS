@@ -1,33 +1,96 @@
 body {
-    font-family: sans-serif;
-    margin: auto;
-    padding: auto;
+    font-family: "Roboto", "Arial", sans-serif;
+    /* Opções de fontes modernas */
+    line-height: 1.6;
+    /* Espaçamento entre linhas para melhor legibilidade */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    /* Cor de fundo neutra */
+    color: #333;
+    /* Cor do texto escura */
+    width: 100vw;
+    height: 100vh;
+    /* Evita a barra de rolagem horizontal */
+    overflow-x: hidden;
 }
 
 h1 {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 2rem 0;
+    /* Espaçamento consistente com rem */
+    font-weight: 500;
+    /* Peso da fonte menos intenso */
 }
 
 form {
     display: grid;
-    grid-template-columns: auto;
-    gap: 10px;
-    max-width: 400px;
-    margin: 0 auto;
+    grid-template-columns: 1fr;
+    /* Uma coluna que ocupa toda a largura */
+    gap: 1rem;
+    max-width: 50vw;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    /* Fundo branco para o formulário */
+    border-radius: 8px;
+    /* Cantos arredondados sutis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    box-sizing: border-box;
 }
 
 label {
-    text-align: right;
+    display: block;
+    /* Labels em blocos para melhor organização */
+    margin-bottom: 0.5rem;
+}
+
+input,
+select {
+    width: 45vw;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    /* Borda fina cinza claro */
+    border-radius: 4px;
 }
 
 #resultadoEmprestimo {
-    padding: 10px;
-    margin: 20px auto;
+    padding: 1.5rem;
+    margin: 2rem auto;
     max-width: 400px;
-    border: 1px solid #000;
-    border-radius: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: pre-wrap;
+    font-family: monospace;
+    /* Fonte monoespaçada para melhor alinhamento */
+    box-sizing: border-box;
+}
 
-    white-space: pre-wrap; /* Permite quebras de linha no texto */
+/* Responsividade */
+@media (max-width: 500px) {
+    form {
+        max-width: 90%;
+        /* Ocupa 90% da largura em telas menores */
+    }
+
+    input,
+    select {
+        width: 60%;
+        /* Ocupa toda a largura */
+    }
+
+    #resultadoEmprestimo {
+        max-width: 80%;
+        /* Ocupa 90% da largura em telas menores */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        /* Tamanho menor para telas menores */
+    }
+
+
 }
