@@ -70,27 +70,83 @@ select {
 }
 
 /* Responsividade */
-@media (max-width: 500px) {
+
+/* telas de smartphones em pé e deitado */
+
+
+@media screen and (min-width: 200px) and (max-width: 600px) {
     form {
-        max-width: 90%;
-        /* Ocupa 90% da largura em telas menores */
+        max-width: 90vw;
+        /* Aumenta a largura do formulário */
     }
 
     input,
     select {
-        width: 60%;
-        /* Ocupa toda a largura */
+        width: 70vw;
+        /* Aumenta a largura dos campos de entrada */
     }
 
-    #resultadoEmprestimo {
-        max-width: 80%;
-        /* Ocupa 90% da largura em telas menores */
+}
+
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 90vw;
+        /* Aumenta a largura do formulário */
     }
 
-    h1 {
-        font-size: 1.5rem;
-        /* Tamanho menor para telas menores */
+    input,
+    select {
+        width: 70vw;
+        /* Aumenta a largura dos campos de entrada */
+    }
+}
+
+/* telas de tablets e desktops */
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    form {
+        max-width: 90vw;
+        /* Aumenta a largura do formulário */
     }
 
+    input,
+    select {
+        width: 70vw;
+        /* Aumenta a largura dos campos de entrada */
+    }
+}
 
+/* Botão */
+
+button {
+    padding: 0.8rem 1.5rem;
+    width: 40%;
+    margin: 0 auto;
+    background-color: #007bff;
+    /* Cor de fundo azul */
+    color: #fff;
+    /* Cor do texto branca */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /* Muda o cursor ao passar por cima */
+    transition: background-color 0.3s;
+
+}
+
+
+/* Animação */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 2s;
 }
