@@ -9,7 +9,12 @@ formulario.addEventListener("submit", (event) => {
     const numeroParcelas = parseInt(document.getElementById("numeroParcelas").value);
     const limiteParcelasSemJuros = parseInt(document.getElementById("limiteParcelasSemJuros").value);
     const idade = parseInt(document.getElementById("idade").value);
-    const dataPrimeiraParcela = new Date(document.getElementById("dataprimeiraparcela").value);
+    // Antes: const dataPrimeiraParcela = new Date(document.getElementById("dataprimeiraparcela").value);
+
+    // Correção: Criação da dataPrimeiraParcela considerando o fuso horário local
+    const dataPrimeiraParcelaInput = document.getElementById("dataprimeiraparcela").value;
+    const [ano, mes, dia] = dataPrimeiraParcelaInput.split('-').map(num => parseInt(num, 10));
+    const dataPrimeiraParcela = new Date(ano, mes - 1, dia);
 
     // Validação das entradas (similar ao código anterior, mas agora usando os valores do formulário)
     if (isNaN(valorEmprestimo) || valorEmprestimo <= 0 ||
